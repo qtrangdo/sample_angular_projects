@@ -18,8 +18,11 @@ export class LogsComponent implements OnInit {
    })
   }
 
-  onSelect(log: Log) {
+  onSelect(log: Log): void {
     this.logService.setFormLog(log); 
   }
 
+  onDelete(log: Log): void {
+    this.logService.deleteLog(log);
+  }
 }

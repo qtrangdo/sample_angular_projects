@@ -1,6 +1,7 @@
 import { Injectable } from '@angular/core';
 import { Observable, BehaviorSubject, of } from 'rxjs';
 import { Log } from '../models/Log';
+import { isArray } from 'util';
 
 @Injectable({
   providedIn: 'root'
@@ -36,5 +37,25 @@ export class LogService {
 
   setFormLog(log: Log) {
     this.logSource.next(log);
+  }
+
+  addLog(log: Log) {
+    this.logs.unshift(log);
+  }
+  updateLog(log: Log) {
+    this.logs.forEach((curr, i) => {
+      if (log.id === curr.id) {
+        this.logs.splice(i, 1);
+      }
+    })
+    this.logs.unshift(log);
+  }
+
+  deleteLog(log: Log) {
+    this.logs.forEach((curr, i) => {
+      if (log.id === curr.id) {
+        this.logs.splice(i, 1);
+      }
+    })
   }
 }

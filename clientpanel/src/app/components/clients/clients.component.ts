@@ -22,6 +22,6 @@ export class ClientsComponent implements OnInit {
   }
 
   getTotalOwned(): void {
-    this.totalOwned = this.clients.reduce((acc, client) => acc + client.balance, 0)
+    this.totalOwned = this.clients.reduce((acc, client) => acc + Number(client.balance), 0)
   }
 }
